@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 Orações Poderosas</title>
+<style>
+  :root{
+    --bg-deep: #12161f;
+    --bg-panel: #1a2030;
+    --brown: #8a6a45;
+    --brown-light: #c8a06a;
+    --gold: #e0b768;
+    --cream: #ede6d8;
+    --muted: #8d94a6;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background: radial-gradient(circle at 50% -10%, #232b40 0%, var(--bg-deep) 55%);
+    color: var(--cream);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 32px 18px 60px;
+  }
+
+  .eyebrow{
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--brown-light);
+    margin-bottom: 14px;
+    text-align:center;
+  }
+
+  h1{
+    font-size: clamp(26px, 5.5vw, 40px);
+    line-height: 1.25;
+    text-align:center;
+    max-width: 720px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+
+  h1 em{
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .subheadline{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    text-align:center;
+    max-width: 480px;
+    margin-bottom: 28px;
+  }
+
+  .video-wrap{
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 9/16;
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(200,160,106,0.25);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+    margin-bottom: 26px;
+    position: relative;
+  }
+
+  .video-wrap video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display:block;
+  }
+
+  .timer-box{
+    font-family: Arial, Helvetica, sans-serif;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    background: var(--bg-panel);
+    border: 1px solid rgba(200,160,106,0.3);
+    padding: 10px 18px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+
+  .timer-box .label{
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .timer-box .time{
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 1px;
+  }
+
+  .price-block{
+    text-align:center;
+    margin-bottom: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .price-old{
+    font-size: 15px;
+    color: var(--muted);
+    text-decoration: line-through;
+    margin-bottom: 2px;
+  }
+
+  .price-new{
+    font-size: 42px;
+    color: var(--gold);
+    font-weight: bold;
+    line-height:1;
+  }
+
+  .price-new small{
+    font-size: 16px;
+    color: var(--cream);
+    font-weight: normal;
+  }
+
+  .price-note{
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .cta-button{
+    display:block;
+    width: 100%;
+    max-width: 380px;
+    text-align:center;
+    background: linear-gradient(180deg, var(--brown-light), var(--brown));
+    color: #17110a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 18px 20px;
+    border-radius: 10px;
+    text-decoration:none;
+    box-shadow: 0 10px 30px rgba(200,160,106,0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    letter-spacing: 0.3px;
+  }
+
+  .cta-button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(200,160,106,0.35);
+  }
+
+  .cta-sub{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    text-align:center;
+    margin-top: 12px;
+    max-width: 320px;
+  }
+
+  .trust{
+    margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    text-align:center;
+    max-width: 360px;
+    line-height: 1.6;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cta-button{ transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="eyebrow">Aliento Celestial</div>
+
+  <h1>As <em>50 Orações</em> que vão mudar sua rotina de fé</h1>
+  <p class="subheadline">Separadas por tipo de situação — prosperidade, cura, família, proteção e paz. Aplique hoje mesmo, sem precisar decorar versículo.</p>
+
+  <div class="video-wrap">
+    <video controls playsinline poster="">
+      <source src="https://hymqxziimikabczdnwei.supabase.co/storage/v1/object/public/vsl/VSL%20(1)%20(1)%20(1).mp4" type="video/mp4">
+      Seu navegador não suporta vídeo.
+    </video>
+  </div>
+
+  <div class="timer-box">
+    <span class="label">Oferta termina em</span>
+    <span class="time" id="timer">15:00</span>
+  </div>
+
+  <div class="price-block">
+    <div class="price-old">De R$27,00</div>
+    <div class="price-new">R$7,99 <small>à vista</small></div>
+    <div class="price-note">Acesso imediato após a compra</div>
+  </div>
+
+  <a href="https://pay.cakto.com.br/363rhot?utm_source=facebook&utm_medium=social&utm_campaign=video_cain&utm_content=matheus" class="cta-button" id="ctaBtn">
+    Quero minhas 50 orações agora
+  </a>
+  <p class="cta-sub">Pagamento seguro • Acesso liberado por email em minutos</p>
+
+  <p class="trust">Feito para quem busca uma rotina de oração mais forte e organizada, com base bíblica, direto no celular.</p>
+
+<script>
+  // Timer regressivo de 15 minutos, reinicia a cada visita (por sessão do navegador)
+  (function(){
+    var STORAGE_KEY = 'oracoes_timer_end';
+    var DURATION_MS = 15 * 60 * 1000;
+
+    var end = sessionStorage.getItem(STORAGE_KEY);
+    if(!end){
+      end = Date.now() + DURATION_MS;
+      sessionStorage.setItem(STORAGE_KEY, end);
+    } else {
+      end = parseInt(end, 10);
+    }
+
+    var timerEl = document.getElementById('timer');
+
+    function update(){
+      var remaining = end - Date.now();
+      if(remaining <= 0){
+        // Reinicia o ciclo pra manter a urgência ativa
+        end = Date.now() + DURATION_MS;
+        sessionStorage.setItem(STORAGE_KEY, end);
+        remaining = DURATION_MS;
+      }
+      var minutes = Math.floor(remaining / 60000);
+      var seconds = Math.floor((remaining % 60000) / 1000);
+      timerEl.textContent =
+        String(minutes).padStart(2,'0') + ':' + String(seconds).padStart(2,'0');
+    }
+
+    update();
+    setInterval(update, 1000);
+  })();
+</script>
+
+</body>
+</html>
