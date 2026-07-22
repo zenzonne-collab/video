@@ -95,7 +95,7 @@
       display: block;
     }
 
-    /* ===== BOTÃO DE PLAY PERSONALIZADO (SEM MOVIMENTO) ===== */
+    /* ===== BOTÃO DE PLAY PERSONALIZADO ===== */
     .video-wrap .plyr__control--overlaid {
       background: rgba(0, 0, 0, 0.75);
       border: 2px solid var(--gold);
@@ -108,28 +108,22 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      /* REMOVIDO o transition com transform */
       transition: background 0.3s ease, border-color 0.3s ease;
     }
 
-    /* Hover sem movimento - apenas muda a cor de fundo */
     .video-wrap .plyr__control--overlaid:hover {
       background: rgba(0, 0, 0, 0.85);
       border-color: var(--brown-light);
-      /* SEM transform: scale() */
     }
 
-    /* Ícone do play - centralizado */
     .video-wrap .plyr__control--overlaid svg {
       width: 38px;
       height: 38px;
       fill: var(--gold);
       display: block;
-      /* Garante que o SVG fique centralizado */
       margin: 0 auto;
     }
 
-    /* Texto personalizado no botão */
     .custom-play-text {
       color: var(--cream);
       font-family: Arial, Helvetica, sans-serif;
@@ -149,11 +143,9 @@
       margin-top: 2px;
     }
 
-    /* Quando o vídeo está rodando, esconder o texto E o botão */
     .video-wrap.is-playing .plyr__control--overlaid {
       opacity: 0;
       pointer-events: none;
-      /* Impede cliques acidentais */
       transition: opacity 0.4s ease;
     }
 
@@ -168,7 +160,7 @@
       background: var(--brown-light);
     }
 
-    /* Timer, Preço e Botão */
+    /* ===== TIMER ===== */
     .timer-box {
       font-family: Arial, Helvetica, sans-serif;
       display: flex;
@@ -196,6 +188,81 @@
       letter-spacing: 1px;
     }
 
+    /* ===== ÁREA DA OFERTA (BLOQUEADA INICIALMENTE) ===== */
+    .offer-area {
+      width: 100%;
+      max-width: 380px;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      transition: all 0.6s ease;
+      position: relative;
+    }
+
+    /* ===== MENSAGEM DE "BLOQUEIO" ===== */
+    .offer-blocked {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 14px;
+      border: 1px dashed var(--brown-light);
+      width: 100%;
+      transition: opacity 0.6s ease, max-height 0.6s ease;
+      opacity: 1;
+      max-height: 300px;
+      overflow: hidden;
+    }
+
+    .offer-blocked .lock-icon {
+      font-size: 32px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .offer-blocked .message {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      color: var(--cream);
+      line-height: 1.5;
+    }
+
+    .offer-blocked .message strong {
+      color: var(--gold);
+    }
+
+    .offer-blocked .sub-message {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ===== CONTEÚDO DA OFERTA (INICIALMENTE OCULTO) ===== */
+    .offer-content {
+      width: 100%;
+      transition: opacity 0.8s ease, max-height 0.8s ease;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    .offer-area.unlocked .offer-blocked {
+      opacity: 0;
+      max-height: 0;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+
+    .offer-area.unlocked .offer-content {
+      opacity: 1;
+      max-height: 400px;
+    }
+
+    /* ===== PREÇO ===== */
     .price-block {
       text-align: center;
       margin-bottom: 22px;
@@ -228,10 +295,10 @@
       margin-top: 4px;
     }
 
+    /* ===== BOTÃO DE COMPRA ===== */
     .cta-button {
       display: block;
       width: 100%;
-      max-width: 380px;
       text-align: center;
       background: linear-gradient(180deg, var(--brown-light), var(--brown));
       color: #17110a;
@@ -271,9 +338,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .cta-button {
-        transition: none;
-      }
+      .cta-button { transition: none; }
+      .offer-area { transition: none; }
+      .offer-blocked { transition: none; }
+      .offer-content { transition: none; }
     }
   </style>
 </head>
@@ -296,16 +364,34 @@
     <span class="time" id="timer">15:00</span>
   </div>
 
-  <div class="price-block">
-    <div class="price-old">De R$27,00</div>
-    <div class="price-new">R$7,99 <small>à vista</small></div>
-    <div class="price-note">Acesso imediato após a compra</div>
-  </div>
+  <!-- ===== ÁREA DA OFERTA COM BLOQUEIO ===== -->
+  <div class="offer-area" id="offerArea">
+    
+    <!-- MENSAGEM BLOQUEADA (visível inicialmente) -->
+    <div class="offer-blocked" id="offerBlocked">
+      <span class="lock-icon">🔒</span>
+      <p class="message">
+        Assista ao vídeo até o final para <strong>liberar as 50 orações</strong>
+      </p>
+      <p class="sub-message">
+        Faltam alguns segundos para você descobrir as 50 orações poderosas
+      </p>
+    </div>
 
-  <a href="https://pay.cakto.com.br/363rhot?utm_source=facebook&utm_medium=social&utm_campaign=video_cain&utm_content=matheus" class="cta-button" id="ctaBtn">
-    Quero minhas 50 orações agora
-  </a>
-  <p class="cta-sub">Pagamento seguro • Acesso liberado por email em minutos</p>
+    <!-- CONTEÚDO DA OFERTA (oculto inicialmente) -->
+    <div class="offer-content" id="offerContent">
+      <div class="price-block">
+        <div class="price-old">De R$27,00</div>
+        <div class="price-new">R$7,99 <small>à vista</small></div>
+        <div class="price-note">Acesso imediato após a compra</div>
+      </div>
+
+      <a href="https://pay.cakto.com.br/363rhot?utm_source=facebook&utm_medium=social&utm_campaign=video_cain&utm_content=matheus" class="cta-button" id="ctaBtn">
+        Quero minhas 50 orações agora
+      </a>
+      <p class="cta-sub">Pagamento seguro • Acesso liberado por email em minutos</p>
+    </div>
+  </div>
 
   <p class="trust">Feito para quem busca uma rotina de oração mais forte e organizada, com base bíblica, direto no celular.</p>
 
@@ -335,9 +421,24 @@
       });
 
       const wrapper = document.getElementById('videoWrapper');
+      const offerArea = document.getElementById('offerArea');
       let textAdded = false;
+      let offerUnlocked = false;
 
-      // Adicionar texto personalizado no botão de play (apenas uma vez)
+      // ===== FUNÇÃO PARA LIBERAR A OFERTA =====
+      function unlockOffer() {
+        if (!offerUnlocked) {
+          offerArea.classList.add('unlocked');
+          offerUnlocked = true;
+          console.log('🔓 Oferta liberada!');
+          
+          // Efeito extra: destaque sutil
+          document.getElementById('ctaBtn').style.transform = 'scale(1.05)';
+          document.getElementById('ctaBtn').style.boxShadow = '0 0 30px rgba(200,160,106,0.6)';
+        }
+      }
+
+      // ===== ADICIONAR TEXTO AO BOTÃO DE PLAY =====
       player.on('ready', function() {
         if (!textAdded) {
           const playButton = document.querySelector('.plyr__control--overlaid');
@@ -345,7 +446,7 @@
             const textSpan = document.createElement('span');
             textSpan.className = 'custom-play-text';
             textSpan.innerHTML = `
-              Assista ao vídeo
+              ▶️ Assista ao vídeo
               <small>Descubra as 50 orações poderosas</small>
             `;
             playButton.appendChild(textSpan);
@@ -354,26 +455,50 @@
         }
       });
 
-      // Quando o vídeo começar a tocar, esconde o botão de play (com texto)
+      // ===== MONITORAR PROGRESSO DO VÍDEO =====
+      player.on('timeupdate', function() {
+        const currentTime = player.currentTime;
+        const duration = player.duration;
+
+        if (duration > 0 && !offerUnlocked) {
+          const progress = (currentTime / duration) * 100;
+          
+          // Libera a oferta quando atingir 50% do vídeo
+          if (progress >= 50) {
+            unlockOffer();
+          }
+        }
+      });
+
+      // ===== GARANTIR QUE LIBERA NO FINAL =====
+      player.on('ended', function() {
+        if (!offerUnlocked) {
+          unlockOffer();
+        }
+      });
+
+      // ===== SE O USUÁRIO PULAR PARA A METADE =====
+      player.on('seeked', function() {
+        const currentTime = player.currentTime;
+        const duration = player.duration;
+        if (duration > 0 && (currentTime / duration) * 100 >= 50 && !offerUnlocked) {
+          unlockOffer();
+        }
+      });
+
+      // ===== ESCONDER BOTÃO DE PLAY QUANDO TOCAR =====
       player.on('play', function() {
         wrapper.classList.add('is-playing');
       });
 
-      // Quando pausar, o botão só aparece se o vídeo não estiver no fim
       player.on('pause', function() {
-        // Se o vídeo não terminou, mostra o botão novamente
         if (!player.ended) {
           wrapper.classList.remove('is-playing');
         }
       });
 
-      // Quando terminar, garante que o botão fique visível (sem texto)
-      player.on('ended', function() {
-        wrapper.classList.remove('is-playing');
-        // Destaca o CTA
-        document.getElementById('ctaBtn').style.transform = 'scale(1.05)';
-        document.getElementById('ctaBtn').style.boxShadow = '0 0 30px rgba(200,160,106,0.6)';
-      });
+      // ===== TESTE RÁPIDO (descomente para testar em 5 segundos) =====
+      // setTimeout(unlockOffer, 5000);
     });
   </script>
 
