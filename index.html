@@ -1,192 +1,281 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>50 Orações Poderosas</title>
-<style>
-  :root{
-    --bg-deep: #12161f;
-    --bg-panel: #1a2030;
-    --brown: #8a6a45;
-    --brown-light: #c8a06a;
-    --gold: #e0b768;
-    --cream: #ede6d8;
-    --muted: #8d94a6;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>50 Orações Poderosas</title>
 
-  *{margin:0;padding:0;box-sizing:border-box;}
+  <!-- CSS do Plyr -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
-  body{
-    background: radial-gradient(circle at 50% -10%, #232b40 0%, var(--bg-deep) 55%);
-    color: var(--cream);
-    font-family: 'Georgia', 'Times New Roman', serif;
-    min-height: 100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding: 32px 18px 60px;
-  }
+  <style>
+    :root {
+      --bg-deep: #12161f;
+      --bg-panel: #1a2030;
+      --brown: #8a6a45;
+      --brown-light: #c8a06a;
+      --gold: #e0b768;
+      --cream: #ede6d8;
+      --muted: #8d94a6;
+      --plyr-color-main: var(--gold);
+    }
 
-  .eyebrow{
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-size: 12px;
-    color: var(--brown-light);
-    margin-bottom: 14px;
-    text-align:center;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  h1{
-    font-size: clamp(26px, 5.5vw, 40px);
-    line-height: 1.25;
-    text-align:center;
-    max-width: 720px;
-    font-weight: 400;
-    color: var(--cream);
-    margin-bottom: 10px;
-  }
+    body {
+      background: radial-gradient(circle at 50% -10%, #232b40 0%, var(--bg-deep) 55%);
+      color: var(--cream);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 18px 60px;
+    }
 
-  h1 em{
-    font-style: normal;
-    color: var(--gold);
-  }
+    .eyebrow {
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--brown-light);
+      margin-bottom: 14px;
+      text-align: center;
+    }
 
-  .subheadline{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    color: var(--muted);
-    text-align:center;
-    max-width: 480px;
-    margin-bottom: 28px;
-  }
+    h1 {
+      font-size: clamp(26px, 5.5vw, 40px);
+      line-height: 1.25;
+      text-align: center;
+      max-width: 720px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
 
-  .video-wrap{
-    width: 100%;
-    max-width: 380px;
-    aspect-ratio: 9/16;
-    background: #000;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(200,160,106,0.25);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.55);
-    margin-bottom: 26px;
-    position: relative;
-  }
+    h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
 
-  .video-wrap video{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display:block;
-  }
+    .subheadline {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 480px;
+      margin-bottom: 28px;
+    }
 
-  .timer-box{
-    font-family: Arial, Helvetica, sans-serif;
-    display:flex;
-    align-items:center;
-    gap: 10px;
-    background: var(--bg-panel);
-    border: 1px solid rgba(200,160,106,0.3);
-    padding: 10px 18px;
-    border-radius: 999px;
-    margin-bottom: 22px;
-  }
+    .video-wrap {
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 9/16;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(200, 160, 106, 0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+      margin-bottom: 26px;
+      position: relative;
+    }
 
-  .timer-box .label{
-    font-size: 12px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+    .video-wrap .plyr {
+      border-radius: 14px;
+      height: 100%;
+    }
 
-  .timer-box .time{
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--gold);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 1px;
-  }
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
 
-  .price-block{
-    text-align:center;
-    margin-bottom: 22px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+    /* ===== BOTÃO DE PLAY PERSONALIZADO (SEM MOVIMENTO) ===== */
+    .video-wrap .plyr__control--overlaid {
+      background: rgba(0, 0, 0, 0.75);
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 18px 28px;
+      width: auto;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      /* REMOVIDO o transition com transform */
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
 
-  .price-old{
-    font-size: 15px;
-    color: var(--muted);
-    text-decoration: line-through;
-    margin-bottom: 2px;
-  }
+    /* Hover sem movimento - apenas muda a cor de fundo */
+    .video-wrap .plyr__control--overlaid:hover {
+      background: rgba(0, 0, 0, 0.85);
+      border-color: var(--brown-light);
+      /* SEM transform: scale() */
+    }
 
-  .price-new{
-    font-size: 42px;
-    color: var(--gold);
-    font-weight: bold;
-    line-height:1;
-  }
+    /* Ícone do play - centralizado */
+    .video-wrap .plyr__control--overlaid svg {
+      width: 38px;
+      height: 38px;
+      fill: var(--gold);
+      display: block;
+      /* Garante que o SVG fique centralizado */
+      margin: 0 auto;
+    }
 
-  .price-new small{
-    font-size: 16px;
-    color: var(--cream);
-    font-weight: normal;
-  }
+    /* Texto personalizado no botão */
+    .custom-play-text {
+      color: var(--cream);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.3;
+      max-width: 160px;
+      margin-top: 2px;
+    }
 
-  .price-note{
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
+    .custom-play-text small {
+      display: block;
+      font-size: 10px;
+      font-weight: normal;
+      color: var(--muted);
+      margin-top: 2px;
+    }
 
-  .cta-button{
-    display:block;
-    width: 100%;
-    max-width: 380px;
-    text-align:center;
-    background: linear-gradient(180deg, var(--brown-light), var(--brown));
-    color: #17110a;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 18px 20px;
-    border-radius: 10px;
-    text-decoration:none;
-    box-shadow: 0 10px 30px rgba(200,160,106,0.25);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    letter-spacing: 0.3px;
-  }
+    /* Quando o vídeo está rodando, esconder o texto E o botão */
+    .video-wrap.is-playing .plyr__control--overlaid {
+      opacity: 0;
+      pointer-events: none;
+      /* Impede cliques acidentais */
+      transition: opacity 0.4s ease;
+    }
 
-  .cta-button:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 14px 36px rgba(200,160,106,0.35);
-  }
+    /* ===== CONTROLES DO PLYR ===== */
+    .video-wrap .plyr__controls {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      padding: 12px 10px;
+    }
 
-  .cta-sub{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-    text-align:center;
-    margin-top: 12px;
-    max-width: 320px;
-  }
+    .video-wrap .plyr__control:hover {
+      background: var(--brown-light);
+    }
 
-  .trust{
-    margin-top: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-    text-align:center;
-    max-width: 360px;
-    line-height: 1.6;
-  }
+    /* Timer, Preço e Botão */
+    .timer-box {
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-panel);
+      border: 1px solid rgba(200, 160, 106, 0.3);
+      padding: 10px 18px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
 
-  @media (prefers-reduced-motion: reduce){
-    .cta-button{ transition: none; }
-  }
-</style>
+    .timer-box .label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .timer-box .time {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--gold);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 1px;
+    }
+
+    .price-block {
+      text-align: center;
+      margin-bottom: 22px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .price-old {
+      font-size: 15px;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-bottom: 2px;
+    }
+
+    .price-new {
+      font-size: 42px;
+      color: var(--gold);
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .price-new small {
+      font-size: 16px;
+      color: var(--cream);
+      font-weight: normal;
+    }
+
+    .price-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .cta-button {
+      display: block;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--brown-light), var(--brown));
+      color: #17110a;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 18px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(200, 160, 106, 0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      letter-spacing: 0.3px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(200, 160, 106, 0.35);
+    }
+
+    .cta-sub {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+      max-width: 320px;
+    }
+
+    .trust {
+      margin-top: 30px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 360px;
+      line-height: 1.6;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta-button {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -195,9 +284,9 @@
   <h1>As <em>50 Orações</em> que vão mudar sua rotina de fé</h1>
   <p class="subheadline">Separadas por tipo de situação — prosperidade, cura, família, proteção e paz. Aplique hoje mesmo, sem precisar decorar versículo.</p>
 
-  <div class="video-wrap">
-    <video controls playsinline poster="">
-      <source src="https://hymqxziimikabczdnwei.supabase.co/storage/v1/object/public/vsl/VSL%20(1)%20(1)%20(1).mp4" type="video/mp4">
+  <div class="video-wrap" id="videoWrapper">
+    <video id="player" playsinline controls>
+      <source src="https://hymqxziimikabczdnwei.supabase.co/storage/v1/object/public/vsl/VSL%20(1)%20(1)%20(1).mp4" type="video/mp4" />
       Seu navegador não suporta vídeo.
     </video>
   </div>
@@ -220,40 +309,106 @@
 
   <p class="trust">Feito para quem busca uma rotina de oração mais forte e organizada, com base bíblica, direto no celular.</p>
 
-<script>
-  // Timer regressivo de 15 minutos, reinicia a cada visita (por sessão do navegador)
-  (function(){
-    var STORAGE_KEY = 'oracoes_timer_end';
-    var DURATION_MS = 15 * 60 * 1000;
+  <!-- JavaScript do Plyr -->
+  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const player = new Plyr('#player', {
+        controls: [
+          'play-large',
+          'play',
+          'progress',
+          'current-time',
+          'duration',
+          'mute',
+          'volume',
+          'fullscreen'
+        ],
+        autoplay: false,
+        muted: false,
+        disableContextMenu: true,
+        hideControls: false,
+        invertTime: false,
+        keyboard: { focused: true, global: false },
+        tooltips: { controls: true, seek: true },
+        storage: { enabled: true, key: 'plyr' }
+      });
 
-    var end = sessionStorage.getItem(STORAGE_KEY);
-    if(!end){
-      end = Date.now() + DURATION_MS;
-      sessionStorage.setItem(STORAGE_KEY, end);
-    } else {
-      end = parseInt(end, 10);
-    }
+      const wrapper = document.getElementById('videoWrapper');
+      let textAdded = false;
 
-    var timerEl = document.getElementById('timer');
+      // Adicionar texto personalizado no botão de play (apenas uma vez)
+      player.on('ready', function() {
+        if (!textAdded) {
+          const playButton = document.querySelector('.plyr__control--overlaid');
+          if (playButton) {
+            const textSpan = document.createElement('span');
+            textSpan.className = 'custom-play-text';
+            textSpan.innerHTML = `
+              Assista ao vídeo
+              <small>Descubra as 50 orações poderosas</small>
+            `;
+            playButton.appendChild(textSpan);
+            textAdded = true;
+          }
+        }
+      });
 
-    function update(){
-      var remaining = end - Date.now();
-      if(remaining <= 0){
-        // Reinicia o ciclo pra manter a urgência ativa
+      // Quando o vídeo começar a tocar, esconde o botão de play (com texto)
+      player.on('play', function() {
+        wrapper.classList.add('is-playing');
+      });
+
+      // Quando pausar, o botão só aparece se o vídeo não estiver no fim
+      player.on('pause', function() {
+        // Se o vídeo não terminou, mostra o botão novamente
+        if (!player.ended) {
+          wrapper.classList.remove('is-playing');
+        }
+      });
+
+      // Quando terminar, garante que o botão fique visível (sem texto)
+      player.on('ended', function() {
+        wrapper.classList.remove('is-playing');
+        // Destaca o CTA
+        document.getElementById('ctaBtn').style.transform = 'scale(1.05)';
+        document.getElementById('ctaBtn').style.boxShadow = '0 0 30px rgba(200,160,106,0.6)';
+      });
+    });
+  </script>
+
+  <!-- Timer regressivo -->
+  <script>
+    (function() {
+      var STORAGE_KEY = 'oracoes_timer_end';
+      var DURATION_MS = 15 * 60 * 1000;
+
+      var end = sessionStorage.getItem(STORAGE_KEY);
+      if (!end) {
         end = Date.now() + DURATION_MS;
         sessionStorage.setItem(STORAGE_KEY, end);
-        remaining = DURATION_MS;
+      } else {
+        end = parseInt(end, 10);
       }
-      var minutes = Math.floor(remaining / 60000);
-      var seconds = Math.floor((remaining % 60000) / 1000);
-      timerEl.textContent =
-        String(minutes).padStart(2,'0') + ':' + String(seconds).padStart(2,'0');
-    }
 
-    update();
-    setInterval(update, 1000);
-  })();
-</script>
+      var timerEl = document.getElementById('timer');
 
+      function update() {
+        var remaining = end - Date.now();
+        if (remaining <= 0) {
+          end = Date.now() + DURATION_MS;
+          sessionStorage.setItem(STORAGE_KEY, end);
+          remaining = DURATION_MS;
+        }
+        var minutes = Math.floor(remaining / 60000);
+        var seconds = Math.floor((remaining % 60000) / 1000);
+        timerEl.textContent =
+          String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
 </body>
 </html>
